@@ -9,8 +9,11 @@ export default function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const optionsObj = { good, neutral, bad };
+
   const handleClick = evt => {
     const btnName = evt.target.innerText.toLowerCase();
+
     switch (btnName) {
       case 'good':
         setGood(prevState => prevState + 1);
@@ -39,7 +42,7 @@ const countPositiveFeedbackPercentage = () => {
     <>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={['good', 'neutral', 'bad']}
+          options={Object.keys(optionsObj)}
           onLeaveFeedback={handleClick}
         />
       </Section>
